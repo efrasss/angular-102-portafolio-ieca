@@ -24,12 +24,13 @@ class ListaNumeros {
             filter. Filtrar items
             Se utiliza para crear un nuevo array reteniendo solo los elementos que cumplan con una condición específica
             La condición debe devolver `true` o `false`
-        */
-       
+        */    
         // Calculo de la media
         const media = this.numeros.reduce((a, b) => a + b, 0) / this.numeros.length
 
         // COMPLETA AQUÍ CÓDIGO CON MÉTODO .filter
+        const numerosMayores = this.numeros.filter(numero => numero > media);
+        console.log(numerosMayores);
     }
 
     ordenamientoMayorAMenor() {
@@ -38,9 +39,9 @@ class ListaNumeros {
             Investiga más sobre el funcionamiento de los parámetros (a,b) de sort para que lograr 
             un ordenamiento de mayor a menor
 
-            this.numeros.sort((a, b))
+            
         */
-
+            this.numeros.sort((a, b) => b - a);
         // COMPLETA AQUÍ CÓDIGO CON MÉTODO .sort
 
         console.log(this.numeros)
@@ -49,5 +50,5 @@ class ListaNumeros {
 }
 
 const misNumeros = new ListaNumeros([1,5,3,4,2,6,8,10,9,7])
-misNumeros.numerosMayoresAMedia()
-misNumeros.ordenamientoMayorAMenor()
+misNumeros.numerosMayoresAMedia();
+misNumeros.ordenamientoMayorAMenor();

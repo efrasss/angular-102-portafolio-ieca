@@ -21,9 +21,16 @@
 const juegos = {
     aguila: 0,
     sol: 1,
-    tirarMoneda: undefined
+    tirarMoneda: function() {
+        const resultado = Math.floor(Math.random() * 2); //Genera un número aleatorio entre 0 y 1
+        if (resultado === this.aguila) {
+            console.log("Cae águila 🦅");
+        } else {
+            console.log("Cae sol 🌞");
+        }
+    }
 }
 
 for (let tiros = 0; tiros < 10; tiros++) {
-    // juegos.tirarMoneda()
+     juegos.tirarMoneda();
 }

@@ -10,8 +10,8 @@
         style="width:70%;margin-bottom:10px" />
     </div>
     <div style="display: flex">
-        <button id="btnActualizacion" onClick="modificarEncabezado()" style="margin-right: 10px">Establecer Encabezado</button>
-        <button id="btnUndo" disabled>Encabezado Anterior</button>
+        <button id="btnActualizacion" onclick="modificarEncabezado()" style="margin-right: 10px">Establecer Encabezado</button>
+        <button id="btnUndo" disabled onclick="deshacerEncabezado()">Encabezado Anterior</button>
     </div>
     <h1 id="encabezado">...</h1>
 
@@ -34,12 +34,38 @@
                     así podrás saber cuando desbloquear el botón
         */
 
-        const btnUndo = document.getElementById('btnUndo')
-        const tituloEncabezado = document.getElementById('encabezado')
-        const inputEncabezado = document.getElementById('inputEncabezado')
+        const btnUndo = document.getElementById('btnUndo');
+        const tituloEncabezado = document.getElementById('encabezado');
+        const inputEncabezado = document.getElementById('inputEncabezado');
+
+        let contadorTitulos = 0;
+        let tituloAnterior = '';
 
         function modificarEncabezado() {
             /* Tu código aquí */
+            const nuevoTitulo = inputEncabezado.value.trim();
+
+            if (nuevoTitulo === ''){
+                alert('EL valor del encabezado no puede ser vacío');
+                return;
+            }
+
+            tituloAnterior = tituloEncabezado.textContent;
+            tituloEncabezado.textContent = nuevoTitulo;
+
+            contadorTitulos++;
+            if (contadorTitulos >= 2) {
+                btnUndo.disabled = false;
+            }
+        }
+
+        function deshacerEncabezado() {
+            tituloEncabezado.textContent = tituloAnterior;
+            contadorTitulos--;
+
+            if (contadorTitulos < 2) {
+                btnUndo.disabled = true;
+            }
         }
     </script>
 </body>
