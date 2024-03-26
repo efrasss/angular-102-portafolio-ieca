@@ -88,7 +88,7 @@
                         <strong>{{ persona }}</strong>
                         <!-- EJERCICIO 01 -->
                         <!-- Agregar funcionalidad para eliminar el nombre de la persona de la lista utilizando el span con ❌ -->
-                        <span> ❌ </span>
+                        <span (click)="eliminarPersona(i)"> ❌ </span>
                     </div>
                 </li>
 
@@ -152,7 +152,8 @@
                 <!-- * Para al menos 8 caracteres -->
                 <input 
                     type="password" 
-                    required 
+                    required
+                    minlength="8"
                     name="passkey"
                     [(ngModel)]="registroInputs.passkey"
                     #passkey="ngModel"
@@ -162,7 +163,7 @@
             <button [disabled]="registroForm.invalid" type="submit">Registrar</button>
             <!-- EJERCICIO 03 -->
             <!-- * Habilitar botón para limpiar información -->
-            <button>Limpiar</button>
+            <button type="button" (click)="limpiarFormulario()">Limpiar</button>
         </form>
     </div>
 
@@ -176,6 +177,7 @@
                 </a>
                 <!-- EJERCICIO 04 -->
                 <!-- * Agregar la imagen del pokemon por medio del endpoint que se encuentra en miPokemon.url -->
+                <img [src]="miPokemon.url + '/sprites/front_default.png'" alt="{{ miPokemon.name }}" />
             </div>
         </div>
     </div>
